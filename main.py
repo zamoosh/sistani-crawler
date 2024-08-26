@@ -2,7 +2,14 @@ from bs4.element import Tag
 from bs4 import BeautifulSoup
 from requests import Response
 import requests
+import django
 import re
+import os
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "crawler.settings")
+django.setup()
+
+from content.models import Content
 
 
 class Crawler:
@@ -16,3 +23,5 @@ class Crawler:
     ]
 
 
+if __name__ == "__main__":
+    print(Content.objects.count())
